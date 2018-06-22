@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
 				<li><a href="/">แจ้งซ่อมเครื่องใช้ไฟฟ้า</a></li>
 				<li><a href="/table">รายการซ่อมเครื่องใช้ไฟฟ้า</a></li>
 				<li><a href="/part">ทะเบียนอะไหล่</a></li>
-				<li><a href="/add">ลงทะเบียนช่างซ่อม</a></li>
+				<li><a href="/add">เพิ่มช่างซ่อมในระบบ</a></li>
 				<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>
 						เข้าสู่ระบบ</a></li>
 			</ul>

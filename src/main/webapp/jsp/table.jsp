@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Spring Boot</title>
 <script src="/js/datatable.js"></script>
-<!-- <script src="/js/xxx.js"></script> -->
 </head>
 
 <body>

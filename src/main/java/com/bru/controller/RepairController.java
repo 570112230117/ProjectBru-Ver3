@@ -36,7 +36,7 @@ public class RepairController {
 	}
 	@RequestMapping(path = "/add", method = RequestMethod.GET)
 	public String addrepairmen(Model model) {
-		return "addrepairmen";
+		return "tabelrepairmen";
 	}
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -69,8 +69,7 @@ public class RepairController {
 	@RequestMapping(path = "/update/{values}", method = RequestMethod.GET)
 	public String update(@PathVariable("values") String values , HttpServletRequest request , Model model) {
 		RepairBean bean = new RepairBean();
-		bean = repairDao.findById(Integer.parseInt(values));
-		
+		bean = repairDao.findById(Integer.parseInt(values));		
 		request.setAttribute("repairBean", bean);
 		return "update";
 	}

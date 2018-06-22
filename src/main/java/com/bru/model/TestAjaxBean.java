@@ -2,16 +2,19 @@ package com.bru.model;
 
 public class TestAjaxBean {
 
-	private String zz;
-
-	public String getZz() {
-		return zz;
+	private String appliances;
+	private String brand;
+	
+	public String getAppliances() {
+		return appliances;
 	}
-
-	public void setZz(String zz) {
-		this.zz = zz;
+	public void setAppliances(String appliances) {
+		this.appliances = appliances;
 	}
-
-
-
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 }

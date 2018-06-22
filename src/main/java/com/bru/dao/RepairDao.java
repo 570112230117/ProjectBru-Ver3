@@ -103,7 +103,7 @@ public class RepairDao {
 		return b;
 	}
 
-	// insert
+	// insertrepair
 	public void insert(RepairBean bean) throws Exception {
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;

@@ -5,17 +5,19 @@
 			<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<jsp:include page="../layout/menu.jsp"></jsp:include>
 			<html>
+
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 				<title>Insert title here</title>
 				<link href="/css/repair.css" rel="stylesheet">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<%
+				<%
 	RepairBean bean = null;
 	bean = (RepairBean) request.getAttribute("repairBean");
 
 %>
 			</head>
+
 			<body>
 				<div class="container" style="margin-top: 1cm; margin-bottom: 5cm">
 
@@ -27,16 +29,21 @@
 						</font>
 						<small>
 							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;"># <%=bean.getRepairId()%></font>
+								<font style="vertical-align: inherit;">#
+									<%=bean.getRepairId()%>
+								</font>
 							</font>
 						</small>
 					</h3>
 					<div class="col-xs-12">
 						<h2 class="page-header">
-						  <i class="fa fa-globe"></i>คุณ  <%=bean.getRepairname()%>
-						  <small class="pull-right">วันที่แจ้งซ่อม: <%=bean.getRepairDateStr()%></small>
+							<i class="fa fa-globe"></i>คุณ
+							<%=bean.getRepairname()%>
+								<small class="pull-right">วันที่แจ้งซ่อม:
+									<%=bean.getRepairDateStr()%>
+								</small>
 						</h2>
-					  </div>
+					</div>
 					<div class="row invoice-info">
 						<div class="col-sm-4 invoice-col">
 							<h4>
@@ -51,23 +58,29 @@
 							<address>
 								<strong>
 									<font style="vertical-align: inherit;">
-										<font style="vertical-align: inherit;"><%=bean.getRepairname()%></font>
+										<font style="vertical-align: inherit;">
+											<%=bean.getRepairname()%>
+										</font>
 									</font>
 								</strong>
 								<br>
 								<font style="vertical-align: inherit;">
 									<font style="vertical-align: inherit;">
-										<%=bean.getRepairAddress()%> </font>
+										<%=bean.getRepairAddress()%>
+									</font>
 								</font>
 								<br>
 								<font style="vertical-align: inherit;">
 									<font style="vertical-align: inherit;">
-										โทรศัพท์: <%=bean.getRepairPhone()%> </font>
+										โทรศัพท์:
+										<%=bean.getRepairPhone()%>
+									</font>
 								</font>
 								<br>
 								<font style="vertical-align: inherit;">
 									<font style="vertical-align: inherit;">
-										อีเมล: <%=bean.getRepairEmail()%>
+										อีเมล:
+										<%=bean.getRepairEmail()%>
 									</font>
 								</font>
 							</address>
@@ -78,7 +91,9 @@
 							<h4>
 								<b>
 									<font style="vertical-align: inherit;">
-										<font style="vertical-align: inherit;">ใบแจ้งซ่อม # <%=bean.getRepairId()%> </font>
+										<font style="vertical-align: inherit;">ใบแจ้งซ่อม #
+											<%=bean.getRepairId()%>
+										</font>
 									</font>
 								</b>
 							</h4>
@@ -88,7 +103,9 @@
 								</font>
 							</b>
 							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;"> <%=bean.getRepairSerialnumber()%> </font>
+								<font style="vertical-align: inherit;">
+									<%=bean.getRepairSerialnumber()%>
+								</font>
 							</font>
 							<br>
 							<b>
@@ -97,7 +114,9 @@
 								</font>
 							</b>
 							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;"> <%=bean.getRepairWarranty()%> </font>
+								<font style="vertical-align: inherit;">
+									<%=bean.getRepairWarranty()%>
+								</font>
 							</font>
 							<br>
 							<b>
@@ -130,7 +149,8 @@
 								<br>
 								<font style="vertical-align: inherit;">
 									<font style="vertical-align: inherit;">
-										<%=bean.getRepairWaste()%> </font>
+										<%=bean.getRepairWaste()%>
+									</font>
 								</font>
 								<br>
 
@@ -142,7 +162,8 @@
 								<br>
 								<font style="vertical-align: inherit;">
 									<font style="vertical-align: inherit;">
-										<%=bean.getRepairDetail()%> </font>
+										<%=bean.getRepairDetail()%>
+									</font>
 								</font>
 								<br>
 							</address>
@@ -167,20 +188,12 @@
 												<font style="vertical-align: inherit;">วันที่นัดซ่อม:</font>
 											</font>
 										</label>
-										<input type="date" class="form-control">
+										<input type="date" disabled="disabled" class="form-control" value="<%=bean.getRepairAppointment()%>">
 									</div>
 									<div class="form-group">
 										<label>
 											<font style="vertical-align: inherit;">
 												<font style="vertical-align: inherit;">ช่วงวันที่ซ่อม:</font>
-											</font>
-										</label>
-										<input type="date" class="form-control">
-									</div>
-									<div class="form-group">
-										<label>
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">ช่วงวันที่และเวลาซ่อม:</font>
 											</font>
 										</label>
 										<input type="date" class="form-control">

@@ -5,7 +5,7 @@ $(document).ready(function () {
         "order": [[0, "asc"]],
         "aoColumns": [
 
-            { "mData": ""},
+            { "mData": "" },
             {
                 "mData": "",
                 "mRender": function (data, type, full) {//full คือ  ข้อมูลของ ตาราง
@@ -55,13 +55,13 @@ $(document).ready(function () {
                 }
             },
             {
-				"mData": "",
-				"mRender": function (data, type, full) {//full คือ  ข้อมูลของ ตาราง
+                "mData": "",
+                "mRender": function (data, type, full) {//full คือ  ข้อมูลของ ตาราง
 
-					return '<a href="/">' + '<span class="glyphicon glyphicon-edit">เพิ่มเติม</span>' + '</a>';
-				
-				}
-			},
+                    return '<a href="/">' + '<span class="glyphicon glyphicon-edit">เพิ่มเติม</span>' + '</a>';
+
+                }
+            },
         ]
     })
 });

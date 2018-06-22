@@ -4,15 +4,10 @@ public class TypeProduct {
 	
 	private int id;
 	private String product;
-	private String typeName;
-	private int typeId;
+	private String appliances;
+	private String appliancesId;
+	private String productid;
 	
-	public int getTypeId() {
-		return typeId;
-	}
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
-	}
 	public int getId() {
 		return id;
 	}
@@ -25,11 +20,23 @@ public class TypeProduct {
 	public void setProduct(String product) {
 		this.product = product;
 	}
-	public String getTypeName() {
-		return typeName;
+	public String getAppliances() {
+		return appliances;
 	}
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
+	public void setAppliances(String appliances) {
+		this.appliances = appliances;
 	}
-	
+	public String getAppliancesId() {
+		return appliancesId;
+	}
+	public void setAppliancesId(String appliancesId) {
+		this.appliancesId = appliancesId;
+	}
+	public String getProductid() {
+		return productid;
+	}
+	public void setProductid(String productid) {
+		this.productid = productid;
+	}
+		
 }
