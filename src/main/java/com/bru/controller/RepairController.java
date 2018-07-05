@@ -1,5 +1,6 @@
 package com.bru.controller;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,21 +27,28 @@ public class RepairController {
 	public String goHome(Model model) {
 		return "repair";
 	}
+
 	@RequestMapping(path = "/part", method = RequestMethod.GET)
 	public String gopart(Model model) {
 		return "parts";
 	}
+
 	@RequestMapping(path = "/map", method = RequestMethod.GET)
 	public String map(Model model) {
 		return "map";
 	}
-	@RequestMapping(path = "/add", method = RequestMethod.GET)
-	public String addrepairmen(Model model) {
-		return "tabelrepairmen";
-	}
+
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
+	}
+	@RequestMapping(path = "/map1", method = RequestMethod.GET)
+	public String map1(Model model) {
+		return "testmap";
+	}
+	@RequestMapping(path = "/report", method = RequestMethod.GET)
+	public String report(Model model) {
+		return "report";
 	}
 	// insert
 	@RequestMapping(value = { "/insertRepair" }, method = RequestMethod.POST, produces = "application/json")
@@ -52,41 +60,38 @@ public class RepairController {
 		}
 		Map<String, String> repair = new HashMap<String, String>();
 		return repair;
-	}	
-	
-	@RequestMapping(path = "/updateRepair", method = RequestMethod.GET)
-	public String updateRepair(RepairBean repairBean) {
-		
-		try {
-			repairDao.update(repairBean);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}		
-		return "update";		
 	}
-	
-	//update
+
+	// update
+	@RequestMapping(path = "/updateRepair", method = RequestMethod.GET)
+	public String updateRepair(RepairBean repairBean) throws SQLException {
+		repairDao.update(repairBean);
+		return "update";
+	}
+
+	// update
 	@RequestMapping(path = "/update/{values}", method = RequestMethod.GET)
-	public String update(@PathVariable("values") String values , HttpServletRequest request , Model model) {
+	public String update(@PathVariable("values") String values, HttpServletRequest request, Model model)
+			throws SQLException {
 		RepairBean bean = new RepairBean();
-		bean = repairDao.findById(Integer.parseInt(values));		
+		bean = repairDao.findById(Integer.parseInt(values));
 		request.setAttribute("repairBean", bean);
 		return "update";
 	}
-	
+
 	// table
 	@RequestMapping(path = "/table", method = RequestMethod.GET)
-	public String goHome(HttpServletRequest request ) {
+	public String goHome(HttpServletRequest request) {
 		request.removeAttribute("repairBean");
 		return "table";
 	}
 
 	// repairmen
 	@RequestMapping(path = "/repairmen/{values}", method = RequestMethod.GET)
-	public String repairmen(@PathVariable("values") String values , HttpServletRequest request ,Model model) {
+	public String repairmen(@PathVariable("values") String values, HttpServletRequest request, Model model)
+			throws SQLException {
 		RepairBean bean = new RepairBean();
 		bean = repairDao.findById(Integer.parseInt(values));
-		
 		request.setAttribute("repairBean", bean);
 		return "repairmen";
 	}

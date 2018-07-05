@@ -7,15 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-   * element that contains the map. */
-
       #map {
         height: 100%;
-      }
-
-      /* Optional: Makes the sample page fill the window. */
-
+      }  
       html,
       body {
         height: 100%;
@@ -47,6 +41,8 @@
     </div>
     <div id="map"></div>
     <p>Click on the map to add markers.</p>
+
+    
     <script>
 
       // In the following example, markers appear when the user clicks on the map.

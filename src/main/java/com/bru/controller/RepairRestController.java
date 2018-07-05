@@ -1,5 +1,6 @@
 package com.bru.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ public class RepairRestController {
 
 	@Autowired
 	RepairDao repairDao;
-	
+
 	@RequestMapping(value = "/all")
-	public List<RepairBean> all() {
+	public List<RepairBean> all() throws SQLException {
 		List<RepairBean> list = new ArrayList<>();
 		list = repairDao.findAll();
 		return list;

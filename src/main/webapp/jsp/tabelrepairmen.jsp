@@ -7,42 +7,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
-
     </head>
 
     <body>
         <div class="container">
-            <h1>เพิ่มช่างซ่อมในระบบ</h1>
+            <div class="box box-default">
+                <div class="form-group">
+                    <h3>รายการข้อมูลช่างซ่อม
+                        <a href="/repairmen1" type="button" class="btn btn btn-primary pull-right">
+                            <span class="glyphicon glyphicon-plus"></span> เพิ่มช่างซ่อมใหม่</a>
+                    </h3>
+                </div>
+                <br>
+                <div class="form-group">
+                    <table id="tabelrepairmen" class="table table-striped table-bordered" style="width:100%">
 
-            <div class="form-group">
-                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> เพิ่มช่างซ่อม</button>
-            </div>
-            <div class="form-group">
-                <table id="tabelrepairmen" class="display">
-
-                    <!-- Header Table -->
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Active</th>
-                        </tr>
-                    </thead>
-                    <!-- Footer Table -->
-                    <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Active</th>
-                        </tr>
-                    </tfoot>
-                </table>
+                        <!-- Header Table -->
+                        <thead>
+                            <tr>
+                                <th>รหัส</th>
+                                <th>ชื่อช่าง</th>
+                                <th>address</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>วันที่เข้างาน</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <!-- Footer Table -->
+                        <tfoot>
+                            <tr>
+                                <th>รหัส</th>
+                                <th>ชื่อช่าง</th>
+                                <th>address</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>วันที่เข้างาน</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
@@ -51,17 +58,54 @@
     <script>
         $(document).ready(function () {
             var table = $('#tabelrepairmen').DataTable({
-                "sAjaxSource": "/employees",
+                "sAjaxSource": "/tabelrepairmen",
                 "sAjaxDataProp": "",
                 "order": [[0, "asc"]],
                 "aoColumns": [
-                    { "mData": "id" },
-                    { "mData": "name" },
-                    { "mData": "lastName" },
-                    { "mData": "email" },
-                    { "mData": "phone" },
-                    { "mData": "active" },
-                    
+                    {
+                        "mData": "id",
+                        "sWidth": "1px"
+                    },
+                    {
+                        "mData": "name",
+                        "sWidth": "100px"
+                    },
+                    {
+                        "mData": "address",
+                        "sWidth": "100px"
+                    },
+                    {
+                        "mData": "email",
+                        "sWidth": "50px"
+                    },
+                    {
+                        "mData": "phone",
+                        "sWidth": "30px"
+                    },
+                    {
+                        "mData": "",
+                        "sWidth": "20px",
+                        "mRender": function (data, type, full) {
+                            if (full.status == 'ใช้งาน') {
+                                return '<center><span class="label label-success">' + full.status + '</span></center>';
+                            } else {
+                                return '<center><span class="label label-danger">' + full.status + '</span></center>';
+                            }
+                        }
+                    },
+                    {
+                        "mData": "work",
+                        "sWidth": "50px"
+                    },
+                    {
+                        "mData": "",
+                        "sWidth": "10px",
+                        "mRender": function (data, type, full) {
+                            return '<center><a href="/updaterepairmen/' + full.id + '" ' + 'class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span></a></center>';
+
+                        }
+                    },
+
                 ]
             })
         });

@@ -300,12 +300,12 @@
 											</font>
 										</label>
 										<select class="form-control" id="exampleFormControlSelect1">
-											<option>รอตรวจสอบ</option>
-											<option>ส่งซ่อม</option>
-											<option>ดำเนินการ</option>
-											<option>นำกลับมาซ่อม</option>
-											<option>สำเร็จ</option>
-											<option>ยกเลิก</option>
+											<option value="">รอตรวจสอบ</option>
+											<option value="">ส่งซ่อม</option>
+											<option value="">นำกลับมาซ่อม</option>
+											<option value="">ซ่อมเสร็จแล้ว</option>
+											<option value="">ซ่อมไม่ได้</option>
+											<option value="">ยกเลิก</option>
 										</select>
 									</div>
 								</div>

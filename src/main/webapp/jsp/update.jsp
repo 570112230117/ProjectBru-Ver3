@@ -17,9 +17,8 @@
 %>
 </head>
 <body>
-	<form name="updateRepair" id="updateRepair" action="/updateRepair" method="get">
+	<form name="updateRepair" id="updateRepair" action="/updateRepair" method="GET">
 		<div class="container" style="margin-top: 1cm; margin-bottom: 2cm">
-
 			<input type="hidden" name="repairId" value="<%=bean.getRepairId()%>">
 			<div class="form-group">
 				<label for="exampleFormControlInput1">ชื่อลูกค้า <span
@@ -51,7 +50,7 @@
 
 			<div class="pull-right">
 				<button type="submit" class="btn btn-success">อัพเดพ</button>
-				<button type="button" class="btn btn-secondary">ยกเลิก</button>
+				<button onclick="window.location.href='/table'" type="button" class="btn btn-secondary">ย้อนกลับ</button>
 			</div>
 		</div>
 	</form>

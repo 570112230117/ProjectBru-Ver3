@@ -1,7 +1,9 @@
 package com.bru.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,14 +17,14 @@ import com.bru.util.ConnectDB;
 public class RepairDao {
 
 	// list table
-	public List<RepairBean> findAll() {
+	public List<RepairBean> findAll() throws SQLException {
 		List<RepairBean> list = new ArrayList<>();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
-
+		Connection conn = con.openConnect();
 		try {
-			sql.append(" SELECT * FROM repair");
+			sql.append(" SELECT * FROM repair ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
 			ResultSet rs = prepared.executeQuery();
 
@@ -47,24 +49,26 @@ public class RepairDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			conn.close();
 		}
 		return list;
 	}// end method list
-	
-	//findById
-	public RepairBean findById(Integer id) {
+
+	// findById
+	public RepairBean findById(Integer id) throws SQLException {
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		RepairBean bean = new RepairBean();
+		Connection conn = con.openConnect();
 		try {
 			sql.append(" SELECT * FROM repair rp WHERE rp.repair_id = ?");
 			prepared = con.openConnect().prepareStatement(sql.toString());
 			prepared.setInt(1, id);
 			ResultSet rs = prepared.executeQuery();
-			
+
 			while (rs.next()) {
-				
 				bean.setRepairId(rs.getInt("repair_id"));
 				bean.setRepairDateStr(rs.getString("repair_date"));
 				bean.setRepairname(rs.getString("repair_name"));
@@ -83,9 +87,11 @@ public class RepairDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			conn.close();
 		}
 		return bean;
-	}
+	}// findById
 
 	// แปลงวันที่เวลา
 	Locale localeTH = new Locale("th", "TH");
@@ -108,9 +114,10 @@ public class RepairDao {
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
-
+		Connection conn = con.openConnect();
 		try {
-			sql.append(" INSERT INTO repair (repair_date, repair_name, repair_address, repair_phone, repair_email, repair_warranty, repair_serialnumber, repair_type, repair_product, repair_waste, repair_detail, repair_appointment,repair_img) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+			sql.append(
+					" INSERT INTO repair (repair_date, repair_name, repair_address, repair_phone, repair_email, repair_warranty, repair_serialnumber, repair_type, repair_product, repair_waste, repair_detail, repair_appointment,repair_img) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
 			prepared.setTimestamp(1, new java.sql.Timestamp(DateTHToEN(bean.getRepairDateStr()).getTime()));
 			prepared.setString(2, bean.getRepairname());
@@ -129,29 +136,35 @@ public class RepairDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			conn.close();
 		}
 	}// end method insert
-	
+
 	// update
-		public void update(RepairBean bean) {
-			ConnectDB con = new ConnectDB();
-			PreparedStatement prepared = null;
-			StringBuilder sql = new StringBuilder();
-			try {
-				sql.append(" UPDATE repair SET  repair_name = ? , repair_address = ?, repair_phone = ?, repair_email = ? WHERE repair_id = ? ");
-				prepared = con.openConnect().prepareStatement(sql.toString());
-				prepared.setString(1, bean.getRepairname());
-				prepared.setString(2, bean.getRepairAddress());
-				prepared.setString(3, bean.getRepairPhone());
-				prepared.setString(4, bean.getRepairEmail());
-				prepared.setInt(5, bean.getRepairId());
+	public void update(RepairBean bean) throws SQLException {
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		Connection conn = con.openConnect();
+		try {
+			sql.append(
+					" UPDATE repair SET  repair_name = ? , repair_address = ?, repair_phone = ?, repair_email = ? WHERE repair_id = ? ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getRepairname());
+			prepared.setString(2, bean.getRepairAddress());
+			prepared.setString(3, bean.getRepairPhone());
+			prepared.setString(4, bean.getRepairEmail());
+			prepared.setInt(5, bean.getRepairId());		
+			prepared.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
 
-				prepared.executeUpdate();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-
-		}// end method update
+	}// end method update
 
 	// endclass
 }

@@ -11,9 +11,13 @@
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 					<title>Welcome to Repair</title>
 					<link href="/css/repair.css" rel="stylesheet">
+					<link href="/css/map.css" rel="stylesheet">
 					<script src="/js/repair.js"></script>
 					<script src="/js/dropdown.js"></script>
 					<script src="/js/warranty.js"></script>
+					<script src="/js/map.js"></script>
+					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjUZj4cPYNcYb2MX45hFhdQyA5YBnFfc8&callback=initMap">
+					</script>
 					<%
 	WarrantyBean bean = null;
 	bean = (WarrantyBean) request.getAttribute("a");
@@ -45,10 +49,27 @@
 									<div class="form-group">
 										<label for="exampleFormControlTextarea1">ที่อยู่
 											<span style="color: red;">*</span>
-											<a href="/map" type="button" class="btn btn-info btn-xs">GPS</a>
+											<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">GPS</button>
 											<small class="text-primary">** มาร์คพิกัด เพื่อความสะดวกในการหาที่อยู่</small>
 										</label>
 										<textarea class="form-control" id="address" rows="3" name="address"></textarea>
+										<!-- Modal -->
+										<div class="modal fade" id="myModal" style="max-width: 48cm;">
+											<div style="margin-left:16%; margin-top: 3%">
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">GPS</h4>
+													</div>
+													<div id="map" class="modal-body">
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="form-group">
 										<label for="exampleFormControlInput1">เบอร์โทรศัพท์
@@ -157,7 +178,7 @@
 						</div>
 						<div class="pull-right">
 							<button type="submit" class="btn btn-success" onclick="insertConfirm()">ยืนยัน</button>
-							<button type="button" class="btn btn-secondary">ยกเลิก</button>
+							<button type="button" class="btn btn-secondary" onclick="window.location.href='/'">ยกเลิก</button>
 						</div>
 					</div>
 				</body>

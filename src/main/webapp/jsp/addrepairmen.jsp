@@ -1,77 +1,122 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.bru.model.RepairmenBean"%>
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <jsp:include page="../layout/menu.jsp"></jsp:include>
     <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Insert title here</title>
-        <link href="/css/adminlte.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Insert title here</title>
+      <link href="/css/repair.css" rel="stylesheet">
+      <%
+	RepairmenBean bean = null;
+	bean = (RepairmenBean) request.getAttribute("repairmenBean");
+%>
     </head>
 
     <body>
-
-        <body class="hold-transition register-page">
-            <div class="register-box">
-                <div class="register-logo">
-                    <a>
-                        <b>ลงทะเบียนช่างซ่อม</b>
-                    </a>
+      <form name="updaterepairmen1" id="updaterepairmen1" action="/updaterepairmen1" method="post">
+        <div class="container" style="margin-top: 1cm; margin-bottom: 11cm">
+          <input type="hidden" name="Id" value="<%=bean.getId()%>">
+          <h3 align="center">ฟอร์มกรอกข้อมูลช่างซ่อม</h3>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">ข้อมูลส่วนตัว</h3>
                 </div>
-
-                <div class="register-box-body">
-                    <p class="login-box-msg">Register a new Repairmen</p>
-
-                    <form action="" method="post" _lpchecked="1">
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="รหัสช่างซ่อม" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                                <input type="text" class="form-control" placeholder="ที่อยู่" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                            </div>
-                            <div class="form-group has-feedback">
-                                    <input type="text" class="form-control" placeholder="เพศ" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                </div>
-                        <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="Password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="Retype password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                        </div>
-
-
-
-                        <div class="row">
-                            <div class="col-xs-8">
-
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
+                <div class="box-body">
+                  <div class="form-group">
+                    <label>ชื่อช่างซ่อม</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="ชื่อ - สกุล"
+                      value="<%=bean.getName()%>">
+                  </div>
+                  <div class="form-group">
+                    <label>ที่อยู่
+                      <span style="color: red;">*</span>
+                    </label>
+                    <textarea class="form-control" id="address" rows="3" name="address"><%=bean.getAddress()%></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>เบอร์โทร</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="เบอร์โทร"
+                      value="<%=bean.getPhone()%>">
+                  </div>
+                  <div class="form-group">
+                    <label>เพศ</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="gender" id="male" value="ชาย" <%if (bean.getGender().equals( "ชาย")) { out.print(
+                          "checked ='checked'"); }%>> ชาย
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="gender" id="female" value="หญิง" <%if (bean.getGender().equals( "หญิง"))
+                          { out.print( "checked ='checked'"); }%>"> หญิง
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>วันเกิด</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" placeholder="วันเกิด"
+                      value="<%=bean.getBirthday()%>">
+                  </div>
                 </div>
-                <!-- /.form-box -->
+              </div>
             </div>
 
+            <div class="col-md-6">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">การทำงาน</h3>
+                </div>
+                <div class="box-body">
+                  <div class="form-group">
+                    <fieldset disabled>
+                      <label>วันที่เข้างาน</label>
+                      <input type="date" class="form-control" id="work" name="work" placeholder="วันที่เข้างาน"
+                        value="<%=bean.getWork()%>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email"
+                      value="<%=bean.getEmail()%>">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                      value="<%=bean.getPassword()%>">
+                  </div>
+                  <div class="form-group">
+                    <label>สถานะการทำงาน</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="status" id="working" value="1" <%if (bean.getStatus().equals( "1")) { out.print(
+                          "checked ='checked'"); }%> />ใช้งาน
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="status" id="resign" value="2" <%if (bean.getStatus().equals( "2")) { out.print(
+                          "checked ='checked'"); }%> />ออก
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        </body>
+          <div class="pull-right">
+            <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+            <button type="submit" class="btn btn-default" onclick="window.location.href='/add'">ยกเลิก</button>
+          </div>
+        </div>
+      </form>
     </body>
+    <jsp:include page="../layout/footer.jsp"></jsp:include>
 
     </html>
